@@ -3,6 +3,9 @@ from snowflake.snowpark import Session
 import pandas as pd
 import plotly.express as px
 
+# Title
+st.set_page_config(page_title="Hospital Re-Admission Analysis", layout="wide")
+
 session = Session.builder.getOrCreate()
 
 data = session.table("HOSPITAL.READMISSION.BEDS_DATA1")
