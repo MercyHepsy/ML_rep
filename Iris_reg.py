@@ -114,4 +114,4 @@ if st.button('Predict'):
     
     st.write(f"The Mean Absolute Error is, **{MAE}**")
     st.write(f"The R-Squared is, **{r_squared}**")
-    st.write(f"The Mean Absolute Error is, **{adjusted_r_squared}**")
+    st.write(f"The Adjusted R-Squared is, **{adjusted_r_squared}**")
