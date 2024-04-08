@@ -39,6 +39,8 @@ iris_df = pd.concat([iris_df, target_df], axis= 1)
 
 # Page Layout
 c1, c2 = st.columns([0.3,0.7])
+with c1:
+    st.write('')	
 
 ########### Histogram #####################################
 st.markdown("### Distribution of Variables")
@@ -68,6 +70,11 @@ st.pyplot(ax.figure)
 iris_df.drop('species', axis= 1, inplace= True)
 target_df = pd.DataFrame(columns= ['species'], data= iris.target)
 iris_df = pd.concat([iris_df, target_df], axis= 1)
+
+# Page Layout
+c1, c2 = st.columns([0.3,0.7])
+with c1:
+    st.write('')
 
 st.markdown("##### Data")
 st.dataframe(iris_df.head())
