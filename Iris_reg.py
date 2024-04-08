@@ -29,19 +29,8 @@ target_df['species'] = target_df['species'].apply(converter)
 # Concatenate the DataFrames
 iris_df = pd.concat([iris_df, target_df], axis= 1)
 
-# pairplot of independent variables
-ax = sns.pairplot(iris_df, hue= 'species')
-st.pyplot(ax.figure)
-
-st.write(iris_df.columns)
-
-######################################### Heat map ############################################
-corr_data = iris_df.drop(['species'], axis= 1)
-a = corr_data.corr()
-corr_fig = sns.heatmap(a, annot = True)
-st.pyplot(corr_fig.figure)
-
 ########### Histogram #####################################
+st.markdown("### Distribution of Variables")
 fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
   
 axes[0,0].set_title("Sepal Length") 
@@ -57,6 +46,13 @@ axes[1,1].set_title("Petal Width")
 axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
 
 st.pyplot(fig)
+
+# pairplot of independent variables
+st.markdown("### Relationship between Variables")
+ax = sns.pairplot(iris_df, hue= 'species')
+st.pyplot(ax.figure)
+
+st.write(iris_df.columns)
 
 # Model
 # Converting Objects to Numerical dtype
@@ -80,3 +76,11 @@ lr.fit(x_train, y_train)
 # Making Predictions
 lr.predict(x_test)
 pred = lr.predict(x_test)
+
+# MAE
+from sklearn.metrics import mean_absolute_error
+
+MAE =  mean_absolute_error(y_test, pred))
+MSE = mean_squared_error(y_test, pred))
+
+st.write(f"The Mean Absolute Error is, **{MAE}**")
