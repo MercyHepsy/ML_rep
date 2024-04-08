@@ -50,7 +50,7 @@ axes[1,0].hist(iris_df['petal length (cm)'], bins=6)
 axes[1,1].set_title("Petal Width") 
 axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
 
-st.pyplot(fig)
+st.pyplot(fig, axes)
 
 ######################################### Heat map ############################################
 corr_data = iris_df.drop(['species'], axis= 1)
