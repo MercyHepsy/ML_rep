@@ -32,6 +32,8 @@ iris_df = pd.concat([iris_df, target_df], axis= 1)
 ax = sns.pairplot(iris_df, hue= 'species')
 st.pyplot(ax.figure)
 
+st.write(iris_df.columns)
+
 fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
   
 axes[0,0].set_title("Sepal Length") 
