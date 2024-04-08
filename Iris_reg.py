@@ -37,16 +37,16 @@ st.write(iris_df.columns)
 fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
   
 axes[0,0].set_title("Sepal Length") 
-axes[0,0].hist(iris_df['SepalLengthCm'], bins=7) 
+axes[0,0].hist(iris_df['sepal length (cm)'], bins=7) 
   
 axes[0,1].set_title("Sepal Width") 
-axes[0,1].hist(iris_df['SepalWidthCm'], bins=5) 
+axes[0,1].hist(iris_df['sepal width (cm)'], bins=5) 
   
 axes[1,0].set_title("Petal Length") 
-axes[1,0].hist(iris_df['PetalLengthCm'], bins=6)
+axes[1,0].hist(iris_df['petal length (cm)'], bins=6)
   
 axes[1,1].set_title("Petal Width") 
-axes[1,1].hist(iris_df['PetalWidthCm'], bins=6)
+axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
 
 st.pyplot(fig)
 
