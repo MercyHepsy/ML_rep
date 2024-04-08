@@ -15,7 +15,7 @@ st.set_page_config(page_title="Iris Data Analysis", layout="wide")
 c1, c2 = st.columns([0.3,0.7])
 
 with c2:
-    st.markdown("## Hospital Re-Admission Analysis")
+    st.markdown("## Iris Data Analysis")
 
 # Load Iris Data
 iris = load_iris()
@@ -36,6 +36,9 @@ target_df['species'] = target_df['species'].apply(converter)
 
 # Concatenate the DataFrames
 iris_df = pd.concat([iris_df, target_df], axis= 1)
+
+# Page Layout
+c1, c2 = st.columns([0.3,0.7])
 
 ########### Histogram #####################################
 st.markdown("### Distribution of Variables")
@@ -66,6 +69,7 @@ iris_df.drop('species', axis= 1, inplace= True)
 target_df = pd.DataFrame(columns= ['species'], data= iris.target)
 iris_df = pd.concat([iris_df, target_df], axis= 1)
 
+st.markdown("##### Data")
 st.dataframe(iris_df.head())
 
 # Variables
