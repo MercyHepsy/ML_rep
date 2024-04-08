@@ -5,6 +5,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Load Iris Data
 iris = load_iris()
