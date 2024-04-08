@@ -51,7 +51,7 @@ axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
 st.pyplot(fig)
 
 ######################################### Heat map ############################################
-corr_data = iris_df.drop('species', axis= 1, inplace= True)
+corr_data = iris_df.drop(['species'], axis= 1)
 corr_fig = sns.heatmap(corr_data.corr(method='pearson'), annot = True)
 st.pyplot(corr_fig)
 
