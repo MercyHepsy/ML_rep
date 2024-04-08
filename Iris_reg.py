@@ -15,6 +15,7 @@ iris = load_iris()
 # Creating pd DataFrames
 iris_df = pd.DataFrame(data= iris.data, columns= iris.feature_names)
 target_df = pd.DataFrame(data= iris.target, columns= ['species'])
+
 def converter(specie):
     if specie == 0:
         return 'setosa'
@@ -34,6 +35,7 @@ st.pyplot(ax.figure)
 
 st.write(iris_df.columns)
 
+########### Histogram #####################################
 fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
   
 axes[0,0].set_title("Sepal Length") 
@@ -53,7 +55,7 @@ st.pyplot(fig)
 ######################################### Heat map ############################################
 corr_data = iris_df.drop(['species'], axis= 1)
 corr_fig = sns.heatmap(corr_data.corr(method='pearson'), annot = True)
-st.pyplot(corr_fig)
+st.pyplot(corr_fig.figure)
 
 # Model
 # Converting Objects to Numerical dtype
