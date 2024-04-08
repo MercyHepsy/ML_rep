@@ -9,7 +9,7 @@ import seaborn as sns
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
-st.set_page_config(page_title="Iris Data Analysis", layout="wide")
+# st.set_page_config(page_title="Iris Data Analysis", layout="wide")
 
 # Page Layout
 c1, c2 = st.columns([0.3,0.7])
