@@ -9,4 +9,5 @@ dependencies:
   - snowflake-snowpark-python
   - matplotlib
   - scikit-learn
+  - seaborn
 
