@@ -37,7 +37,7 @@ st.write(iris_df.columns)
 
 ######################################### Heat map ############################################
 corr_data = iris_df.drop(['species'], axis= 1)
-corr_fig = sns.heatmap(corr_data, fmt='d', cmap="YlGnBu", annot = True)
+corr_fig = sns.heatmap(corr_data, annot = True)
 st.pyplot(corr_fig.figure)
 
 ########### Histogram #####################################
