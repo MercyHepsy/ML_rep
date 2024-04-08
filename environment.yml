@@ -8,3 +8,4 @@ dependencies:
   - plotly
   - snowflake-snowpark-python
   - matplotlib
+  - scikit-learn
