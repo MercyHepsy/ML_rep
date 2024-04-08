@@ -93,14 +93,25 @@ lr = LinearRegression()
 lr.fit(x_train, y_train)
 
 if st.button('Predict'):    
-	# Making Predictions
+    # Making Predictions
     lr.predict(x_test)
-    pred = lr.predict(x_test)
+    y_pred = lr.predict(x_test)
     
     # MAE
     from sklearn.metrics import mean_absolute_error, mean_squared_error
+    from sklearn.metrics import r2_score
     
-    MAE =  mean_absolute_error(y_test, pred)
-    MSE = mean_squared_error(y_test, pred)
+    MAE =  mean_absolute_error(y_test, y_pred)
+    MSE = mean_squared_error(y_test, y_pred)
+
+    # R-Squared
+    r_squared = r2_score(y_test, y_pred)
+
+    # Adjusted R-Squared
+    n = len(y)
+    p = x.shape[1]
+    adjusted_r_squared = 1 - (1 - r_squared) * (n - 1) / (n - p - 1)
     
     st.write(f"The Mean Absolute Error is, **{MAE}**")
+    st.write(f"The R-Squared is, **{r_squared}**")
+    st.write(f"The Mean Absolute Error is, **{adjusted_r_squared}**")
