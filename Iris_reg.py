@@ -97,8 +97,8 @@ y_pred = model.predict(x_test)
         
 # Accuracy, ROC
 from sklearn.metrics import roc_auc_score
-acc_rf = model.score(x_test, y_test)
-roc_rf = roc_auc_score(y_test, y_pred)
+# acc_rf = model.score(x_test, y_test)
+# roc_rf = roc_auc_score(y_test, y_pred)
 
 # Confusion matrix
 # Compute confusion matrix
