@@ -44,7 +44,7 @@ with c1:
     st.write('')	
 
 ########### Histogram #####################################
-c1, c2 = st.columns([0.5, 0.5])
+c1, c2, c3 = st.columns([0.4, 0.2, 0.4])
 with c1:
     st.markdown("### Distribution of Variables")
     fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
@@ -64,7 +64,7 @@ with c1:
     st.pyplot(fig)
 
 # pairplot of independent variables
-with c2:
+with c3:
     st.markdown("### Relationship between Variables")
     ax = sns.pairplot(iris_df, hue= 'species')
     st.pyplot(ax.figure)
@@ -113,7 +113,7 @@ cm = confusion_matrix(y_test, y_pred)
 conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
                            index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
 
-c1, c2 = st.columns([0.50,0.50])
+c1, c2, c3 = st.columns([0.4, 0.2, 0.4])
 with c1:
     st.markdown("### Confusion Matrix")
     # Plot confusion matrix
@@ -124,16 +124,6 @@ with c1:
     plt.ylabel('True labels')
     st.pyplot(plt)
 
-with c2:
-    st.markdown("### Metrics Bar Graph")
-    fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
-    bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
-    
-    for bar in bars:
-        bar.set_width(0.5)
-    
-    st.pyplot(fig)
-
 # Metrics Graph
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
@@ -141,6 +131,17 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
+
+with c3:
+    st.markdown("### Metrics Bar Graph")
+    fig, ax = plt.subplots(figsize=(5, 3))  
+    # Adjust figure size
+    bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  
+    
+    for bar in bars:
+        bar.set_width(0.5)
+    
+    st.pyplot(fig)
 
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
