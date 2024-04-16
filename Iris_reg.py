@@ -139,10 +139,10 @@ for bar in bars:
                 textcoords="offset points",
                 ha='center', va='bottom')
 
-# Remove x and y axis
-ax.spines['bottom'].set_visible(False)
-ax.spines['left'].set_visible(False)
-ax.yaxis.set_visible(False)
+# # Remove x and y axis
+# ax.spines['bottom'].set_visible(False)
+# ax.spines['left'].set_visible(False)
+# ax.yaxis.set_visible(False)
 
 st.pyplot(fig)
 
