@@ -130,10 +130,11 @@ st.bar_chart({'Accuracy': accuracy, 'Precision': precision, 'Recall': recall})
 if st.button('Predict'):    
     # Making Predictions
     y_pred = model.predict(x_test)
+    st.dataframe(y_pred)
 
-    if y_pred == 0:
-        st.write('The Flower is likely a Setosa')
-    if y_pred == 1:
-        st.write('The flower is likely a Versicolor')
-    if y_pred == 2:
-        st.write('The Flower is likely a Virginica')
+    # if y_pred == 0:
+    #     st.write('The Flower is likely a Setosa')
+    # if y_pred == 1:
+    #     st.write('The flower is likely a Versicolor')
+    # if y_pred == 2:
+    #     st.write('The Flower is likely a Virginica')
