@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestClassifier
 
 # st.set_page_config(page_title="Iris Data Analysis", layout="wide")
 
@@ -86,32 +86,53 @@ y= iris_df['sepal length (cm)']
 # Splitting the Dataset 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size= 0.25, random_state= 20)
 
-# Instantiating LinearRegression() Model
-lr = LinearRegression()
+# Random Forest Model for Model building
+RF = RandomForestClassifier()
+    
+# Model 
+model = RF.fit(x_train, y_train)
+    
+# Prediction
+y_pred = model.predict(x_test)
+        
+# Accuracy, ROC
+from sklearn.metrics import roc_auc_score
+acc_rf = model.score(x_test, y_test)
+roc_rf = roc_auc_score(y_test, y_pred)
 
-# Training/Fitting the Model
-lr.fit(x_train, y_train)
+# Confusion matrix
+# Compute confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+
+# Create DataFrame for confusion matrix
+conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
+                           index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
+
+# Plot confusion matrix
+plt.figure(figsize=(8, 5))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap="YlGnBu")
+plt.title('Confusion Matrix for Iris Dataset')
+plt.xlabel('Predicted labels')
+plt.ylabel('True labels')
+plt.show()
+
+# Metrics Graph
+from sklearn.metrics import accuracy_score, precision_score, recall_score
+
+# Calculate metrics
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, average='weighted')
+recall = recall_score(y_test, y_pred, average='weighted')
+
+st.bar_chart({'Accuracy': accuracy, 'Precision': precision, 'Recall': recall})
 
 if st.button('Predict'):    
     # Making Predictions
-    lr.predict(x_test)
-    y_pred = lr.predict(x_test)
-    
-    # MAE
-    from sklearn.metrics import mean_absolute_error, mean_squared_error
-    from sklearn.metrics import r2_score
-    
-    MAE =  mean_absolute_error(y_test, y_pred)
-    MSE = mean_squared_error(y_test, y_pred)
+    y_pred = model.predict(x_test)
 
-    # R-Squared
-    r_squared = r2_score(y_test, y_pred)
-
-    # Adjusted R-Squared
-    n = len(y)
-    p = x.shape[1]
-    adjusted_r_squared = 1 - (1 - r_squared) * (n - 1) / (n - p - 1)
-    
-    st.write(f"The Mean Absolute Error is, **{MAE}**")
-    st.write(f"The R-Squared is, **{r_squared}**")
-    st.write(f"The Adjusted R-Squared is, **{adjusted_r_squared}**")
+    if y_pred == 0:
+        st.write('The Flower is likely a Setosa')
+    if y_pred == 1;
+        st.write('The flower is likely a Versicolor')
+    if y_pred == 2;
+        st.write('The Flower is likely a Virginica')
