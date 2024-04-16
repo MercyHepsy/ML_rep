@@ -80,8 +80,8 @@ st.markdown("##### Data")
 st.dataframe(iris_df.head())
 
 # Variables
-x= iris_df.drop(labels= 'sepal length (cm)', axis= 1)
-y= iris_df['sepal length (cm)']
+x= iris_df.drop(labels= 'species', axis= 1)
+y= iris_df['species']
 
 # Splitting the Dataset 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size= 0.25, random_state= 20)
