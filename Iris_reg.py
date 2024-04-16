@@ -45,32 +45,38 @@ with c1:
 
 ########### Histogram #####################################
 st.markdown("### Distribution of Variables")
-fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
-  
-axes[0,0].set_title("Sepal Length") 
-axes[0,0].hist(iris_df['sepal length (cm)'], bins=7) 
-  
-axes[0,1].set_title("Sepal Width") 
-axes[0,1].hist(iris_df['sepal width (cm)'], bins=5) 
-  
-axes[1,0].set_title("Petal Length") 
-axes[1,0].hist(iris_df['petal length (cm)'], bins=6)
-  
-axes[1,1].set_title("Petal Width") 
-axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
 
-st.pyplot(fig)
+c1, c2, c3 = st.columns([0.33,0.33,0.33])
+with c2:
+    fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
+      
+    axes[0,0].set_title("Sepal Length") 
+    axes[0,0].hist(iris_df['sepal length (cm)'], bins=7) 
+      
+    axes[0,1].set_title("Sepal Width") 
+    axes[0,1].hist(iris_df['sepal width (cm)'], bins=5) 
+      
+    axes[1,0].set_title("Petal Length") 
+    axes[1,0].hist(iris_df['petal length (cm)'], bins=6)
+      
+    axes[1,1].set_title("Petal Width") 
+    axes[1,1].hist(iris_df['petal width (cm)'], bins=6)
+    
+    st.pyplot(fig)
 
 # pairplot of independent variables
 st.markdown("### Relationship between Variables")
-ax = sns.pairplot(iris_df, hue= 'species')
-st.pyplot(ax.figure)
+c1, c2, c3 = st.columns([0.33,0.33,0.33])
 
-# Model
-# Converting Objects to Numerical dtype
-iris_df.drop('species', axis= 1, inplace= True)
-target_df = pd.DataFrame(columns= ['species'], data= iris.target)
-iris_df = pd.concat([iris_df, target_df], axis= 1)
+with c2:
+    ax = sns.pairplot(iris_df, hue= 'species')
+    st.pyplot(ax.figure)
+    
+    # Model
+    # Converting Objects to Numerical dtype
+    iris_df.drop('species', axis= 1, inplace= True)
+    target_df = pd.DataFrame(columns= ['species'], data= iris.target)
+    iris_df = pd.concat([iris_df, target_df], axis= 1)
 
 # Page Layout
 c1, c2 = st.columns([0.3,0.7])
@@ -109,13 +115,15 @@ cm = confusion_matrix(y_test, y_pred)
 conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
                            index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
 
-# Plot confusion matrix
-plt.figure(figsize=(8, 5))
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap="YlGnBu")
-plt.title('Confusion Matrix for Iris Dataset')
-plt.xlabel('Predicted labels')
-plt.ylabel('True labels')
-plt.show()
+c1, c2, c3 = st.columns([0.33,0.33,0.33])
+with c2:
+    # Plot confusion matrix
+    plt.figure(figsize=(8, 5))
+    sns.heatmap(conf_matrix, annot=True, fmt='d', cmap="YlGnBu")
+    plt.title('Confusion Matrix for Iris Dataset')
+    plt.xlabel('Predicted labels')
+    plt.ylabel('True labels')
+    st.pyplot(plt)
 
 # Metrics Graph
 from sklearn.metrics import accuracy_score, precision_score, recall_score
@@ -125,13 +133,15 @@ accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 
-# fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
-# bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
-
-# for bar in bars:
-#     bar.set_width(0.5)
-
-# st.pyplot(fig)
+c1, c2, c3 = st.columns([0.33,0.33,0.33])
+with c2:
+    fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
+    bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
+    
+    for bar in bars:
+        bar.set_width(0.5)
+    
+    st.pyplot(fig)
 
 def class_flower(i):
     if i == 0:
