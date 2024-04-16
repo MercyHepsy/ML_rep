@@ -132,7 +132,7 @@ if st.button('Predict'):
 
     if y_pred == 0:
         st.write('The Flower is likely a Setosa')
-    if y_pred == 1;
+    if y_pred == 1:
         st.write('The flower is likely a Versicolor')
-    if y_pred == 2;
+    if y_pred == 2:
         st.write('The Flower is likely a Virginica')
