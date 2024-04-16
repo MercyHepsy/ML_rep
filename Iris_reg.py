@@ -127,16 +127,21 @@ recall = recall_score(y_test, y_pred, average='weighted')
 
 st.bar_chart({'Accuracy': accuracy, 'Precision': precision, 'Recall': recall})
 
+def class_flower(i):
+    if i == 0:
+        return 'The Flower is likely a Setosa'
+    if i == 1:
+        return 'The flower is likely a Versicolor'
+    if i == 2:
+        return 'The Flower is likely a Virginica'
+    
+
 if st.button('Predict'):    
     # Making Predictions
     y_pred = model.predict(x_test)
     y_pred = pd.DataFrame(y_pred)
     y_pred.rename(columns={0: 'value'}, inplace=True)
-    st.dataframe(y_pred)
+    
+    y_pred['value'].apply(class_flower)
 
-    if y_pred['value'] == 0:
-        st.write('The Flower is likely a Setosa')
-    if y_pred['value'] == 1:
-        st.write('The flower is likely a Versicolor')
-    if y_pred['value'] == 2:
-        st.write('The Flower is likely a Virginica')
+    st.dataframe(y_pred)
