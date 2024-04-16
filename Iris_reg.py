@@ -44,8 +44,8 @@ with c1:
     st.write('')	
 
 ########### Histogram #####################################
-c1, c2, c3 = st.columns([0.33,0.70,0.33])
-with c2:
+c1, c2 = st.columns([0.5, 0.5])
+with c1:
     st.markdown("### Distribution of Variables")
     fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
       
@@ -63,13 +63,7 @@ with c2:
     
     st.pyplot(fig)
 
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
-with c2:
-    st.write("")
-
 # pairplot of independent variables
-c1, c2, c3 = st.columns([0.33,0.70,0.33])
-
 with c2:
     st.markdown("### Relationship between Variables")
     ax = sns.pairplot(iris_df, hue= 'species')
@@ -80,6 +74,10 @@ with c2:
     iris_df.drop('species', axis= 1, inplace= True)
     target_df = pd.DataFrame(columns= ['species'], data= iris.target)
     iris_df = pd.concat([iris_df, target_df], axis= 1)
+
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.write("")
 
 # Page Layout
 c1, c2 = st.columns([0.3,0.7])
@@ -115,8 +113,8 @@ cm = confusion_matrix(y_test, y_pred)
 conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
                            index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
 
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
-with c2:
+c1, c2 = st.columns([0.50,0.50])
+with c1:
     st.markdown("### Confusion Matrix")
     # Plot confusion matrix
     plt.figure(figsize=(8, 5))
@@ -125,6 +123,16 @@ with c2:
     plt.xlabel('Predicted labels')
     plt.ylabel('True labels')
     st.pyplot(plt)
+
+with c2:
+    st.markdown("### Metrics Bar Graph")
+    fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
+    bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
+    
+    for bar in bars:
+        bar.set_width(0.5)
+    
+    st.pyplot(fig)
 
 # Metrics Graph
 from sklearn.metrics import accuracy_score, precision_score, recall_score
@@ -137,18 +145,7 @@ recall = recall_score(y_test, y_pred, average='weighted')
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     st.write("")
-
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
-with c2:
-    st.markdown("### Metrics Bar Graph")
-    fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
-    bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
     
-    for bar in bars:
-        bar.set_width(0.5)
-    
-    st.pyplot(fig)
-
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     st.write("")
