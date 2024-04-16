@@ -44,10 +44,9 @@ with c1:
     st.write('')	
 
 ########### Histogram #####################################
-st.markdown("### Distribution of Variables")
-
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
+c1, c2, c3 = st.columns([0.33,0.70,0.33])
 with c2:
+    st.markdown("### Distribution of Variables")
     fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
       
     axes[0,0].set_title("Sepal Length") 
@@ -64,11 +63,15 @@ with c2:
     
     st.pyplot(fig)
 
-# pairplot of independent variables
-st.markdown("### Relationship between Variables")
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.write("")
+
+# pairplot of independent variables
+c1, c2, c3 = st.columns([0.33,0.70,0.33])
 
 with c2:
+    st.markdown("### Relationship between Variables")
     ax = sns.pairplot(iris_df, hue= 'species')
     st.pyplot(ax.figure)
     
@@ -82,11 +85,6 @@ with c2:
 c1, c2 = st.columns([0.3,0.7])
 with c1:
     st.write('')
-
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
-with c2:
-    st.markdown("##### Data")
-    st.dataframe(iris_df.head())
 
 # Variables
 x= iris_df.drop(labels= 'species', axis= 1)
@@ -119,6 +117,7 @@ conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Ve
 
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
+    st.markdown("### Confusion Matrix")
     # Plot confusion matrix
     plt.figure(figsize=(8, 5))
     sns.heatmap(conf_matrix, annot=True, fmt='d', cmap="YlGnBu")
@@ -137,6 +136,11 @@ recall = recall_score(y_test, y_pred, average='weighted')
 
 c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
+    st.write("")
+
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.markdown("### Metrics Bar Graph")
     fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
     bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
     
@@ -144,6 +148,15 @@ with c2:
         bar.set_width(0.5)
     
     st.pyplot(fig)
+
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.write("")
+
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.markdown("##### Data")
+    st.dataframe(iris_df.head())
 
 def class_flower(i):
     if i == 0:
