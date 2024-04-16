@@ -131,7 +131,7 @@ if st.button('Predict'):
     # Making Predictions
     y_pred = model.predict(x_test)
     y_pred = pd.DataFrame(y_pred)
-    y_pred.rename(columns={'0':'value'}, inplace = True)
+    y_pred.rename(columns={0: 'value'}, inplace=True)
     st.dataframe(y_pred)
 
     if y_pred['value'] == 0:
