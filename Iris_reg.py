@@ -125,7 +125,9 @@ accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 
-st.bar_chart({'Accuracy': accuracy, 'Precision': precision, 'Recall': recall})
+fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
+bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'orange'])
+st.pyplot(fig)
 
 def class_flower(i):
     if i == 0:
