@@ -131,7 +131,7 @@ if st.button('Predict'):
     # Making Predictions
     y_pred = model.predict(x_test)
     y_pred = pd.DataFrame(y_pred)
-    st.dataframe(y_pred['values'])
+    st.dataframe(y_pred)
 
     if y_pred['value'] == 0:
         st.write('The Flower is likely a Setosa')
