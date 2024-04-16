@@ -142,6 +142,6 @@ if st.button('Predict'):
     y_pred = pd.DataFrame(y_pred)
     y_pred.rename(columns={0: 'value'}, inplace=True)
     
-    y_pred['value'].apply(class_flower)
+    y_pred['value'] = y_pred['value'].apply(class_flower)
 
     st.dataframe(y_pred)
