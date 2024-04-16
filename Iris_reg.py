@@ -132,9 +132,9 @@ for bar in bars:
     bar.set_width(0.5)
 
 # Show bar values within the box
-for bar in bars:
-    height = bar.get_height()
-    ax.text(bar.get_x() + bar.get_width() / 2, height + 0.01, '%.2f' % height, ha='center', va='bottom')  # Adjusted position
+# for bar in bars:
+#     height = bar.get_height()
+#     ax.text(bar.get_x() + bar.get_width() / 2, height + 0.01, '%.2f' % height, ha='center', va='bottom')  # Adjusted position
     
 # # Remove x and y axis
 # ax.spines['bottom'].set_visible(False)
