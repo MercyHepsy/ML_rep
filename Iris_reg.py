@@ -46,7 +46,7 @@ with c1:
 ########### Histogram #####################################
 st.markdown("### Distribution of Variables")
 
-c1, c2, c3 = st.columns([0.33,0.33,0.33])
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
       
@@ -66,7 +66,7 @@ with c2:
 
 # pairplot of independent variables
 st.markdown("### Relationship between Variables")
-c1, c2, c3 = st.columns([0.33,0.33,0.33])
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
 
 with c2:
     ax = sns.pairplot(iris_df, hue= 'species')
@@ -83,8 +83,10 @@ c1, c2 = st.columns([0.3,0.7])
 with c1:
     st.write('')
 
-st.markdown("##### Data")
-st.dataframe(iris_df.head())
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
+with c2:
+    st.markdown("##### Data")
+    st.dataframe(iris_df.head())
 
 # Variables
 x= iris_df.drop(labels= 'species', axis= 1)
@@ -115,7 +117,7 @@ cm = confusion_matrix(y_test, y_pred)
 conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
                            index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
 
-c1, c2, c3 = st.columns([0.33,0.33,0.33])
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     # Plot confusion matrix
     plt.figure(figsize=(8, 5))
@@ -133,7 +135,7 @@ accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 
-c1, c2, c3 = st.columns([0.33,0.33,0.33])
+c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
     bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
