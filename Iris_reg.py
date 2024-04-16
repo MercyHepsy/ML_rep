@@ -126,18 +126,17 @@ precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 
 fig, ax = plt.subplots(figsize=(5, 3))  # Adjust figure size
-bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])
+bars = ax.bar(['Accuracy', 'Precision', 'Recall'], [accuracy, precision, recall], color=['blue', 'green', 'red'])  # Different colors for bars
+
+# Adjust bar width
 for bar in bars:
     bar.set_width(0.5)
 
-# Show bar values
+# Show bar values within the box
 for bar in bars:
     height = bar.get_height()
-    ax.annotate('%.2f' % height,
-                xy=(bar.get_x() + bar.get_width() / 3, height),
-                xytext=(0, 3),  # 3 points vertical offset
-                textcoords="offset points",
-                ha='center', va='bottom')
+    ax.text(bar.get_x() + bar.get_width() / 2, height, '%.2f' % height, ha='center', va='bottom')
+
 
 # # Remove x and y axis
 # ax.spines['bottom'].set_visible(False)
