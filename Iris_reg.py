@@ -134,7 +134,7 @@ for bar in bars:
 for bar in bars:
     height = bar.get_height()
     ax.annotate('%.2f' % height,
-                xy=(bar.get_x() + bar.get_width() / 2, height),
+                xy=(bar.get_x() + bar.get_width() / 3, height),
                 xytext=(0, 3),  # 3 points vertical offset
                 textcoords="offset points",
                 ha='center', va='bottom')
