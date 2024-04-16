@@ -44,7 +44,7 @@ with c1:
     st.write('')	
 
 ########### Histogram #####################################
-c1, c2, c3 = st.columns([0.4, 0.2, 0.4])
+c1, c2, c3 = st.columns([0.4, 0.1, 0.4])
 with c1:
     st.markdown("### Distribution of Variables")
     fig, axes = plt.subplots(2, 2, figsize=(10,10)) 
@@ -113,7 +113,7 @@ cm = confusion_matrix(y_test, y_pred)
 conf_matrix = pd.DataFrame(data=cm, columns=['Predicted: Setosa', 'Predicted: Versicolor', 'Predicted: Virginica'],
                            index=['Actual: Setosa', 'Actual: Versicolor', 'Actual: Virginica'])
 
-c1, c2, c3 = st.columns([0.4, 0.2, 0.4])
+c1, c2, c3 = st.columns([0.4, 0.1, 0.4])
 with c1:
     st.markdown("### Confusion Matrix")
     # Plot confusion matrix
@@ -151,10 +151,8 @@ c1, c2, c3 = st.columns([0.33,0.50,0.33])
 with c2:
     st.write("")
 
-c1, c2, c3 = st.columns([0.33,0.50,0.33])
-with c2:
-    st.markdown("##### Data")
-    st.dataframe(iris_df.head())
+st.markdown("##### Data")
+st.dataframe(iris_df.head())
 
 def class_flower(i):
     if i == 0:
@@ -164,7 +162,6 @@ def class_flower(i):
     if i == 2:
         return 'The Flower is likely a Virginica'
     
-
 if st.button('Predict'):    
     # Making Predictions
     y_pred = model.predict(x_test)
